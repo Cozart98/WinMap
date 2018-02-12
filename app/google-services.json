@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "815548015594",
+    "firebase_url": "https://winmap-3802d.firebaseio.com",
+    "project_id": "winmap-3802d",
+    "storage_bucket": "winmap-3802d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815548015594:android:e32d6a2a43734ce2",
+        "android_client_info": {
+          "package_name": "com.example.macbook.winmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815548015594-5iggdbu6jl5dk8fadsu228k5jkvrf7fs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.macbook.winmap",
+            "certificate_hash": "9d1bec55b9d0a3a0cf3ae6d13a91da689c4ace46"
+          }
+        },
+        {
+          "client_id": "815548015594-vpkt7ehcpchul2f5ra4l39e17u8kb63l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd0_Ms2wGeNmvg4HQEZAiCrAet2QnR9xw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815548015594-vpkt7ehcpchul2f5ra4l39e17u8kb63l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
