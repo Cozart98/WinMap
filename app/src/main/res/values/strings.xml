@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">WinMAP</string>
     <string name="title_activity_maps">Map</string>
+    <string name="inscription">Incription</string>
+    <string name="inscrire">s\'inscrire</string>
+    <string name="go_to_login">J\'ai déjà un compte, je veux me connecter</string>
+    <string name="votre_nom">Nom</string>
+    <string name="votre_prenom">Prénom</string>
+    <string name="votre_e_mail">E-mail</string>
+    <string name="votre_mot_de_passe">Mot de passe</string>
+    <string name="auth_incorrect">Votre Email ou votre mot de passe est incorrect</string>
+    <string name="confirm_password">Confirmer votre mot de passe</string>
+    <string name="champ_email_mdp_vide">Veuillez remplir tous les champs</string>
+    <string name="champ_inscription_vide">Veuillez remplir tous les champs pour s\'inscrire</string>
+    <string name="reset_password">Mot de Passe oublié ? Réinitialisez le mot de passe.</string>
+    <string name="goto_signup">Je n\'ai pas de compte, je veux m\'inscrire.</string>
+    <string name="instructions_sent_by_email">Nous vous avons envoyé les instructions par e-mail</string>
+    <string name="password_initialization_failed">Echec de l\'initialisation du mot de passe</string>
 </resources>

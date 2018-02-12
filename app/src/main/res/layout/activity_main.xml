@@ -1,23 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.macbook.winmap.MainActivity">
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:focusable="true"
+    android:background="@color/win_blue"
+android:focusableInTouchMode="true"
+tools:context="com.example.macbook.winmap.MainActivity">
 
-    <Button
-        android:id="@+id/bt_go_win_map"
-        android:layout_width="wrap_content"
+
+<ProgressBar
+    android:id="@+id/signup_progress_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:indeterminate="true"
+    android:indeterminateTint="@color/win_yellow"
+    android:indeterminateTintMode="src_atop" />
+
+<TextView
+    android:id="@+id/tv_title_signup"
+    style="@style/subtitle"
+    android:text="@string/inscription" />
+
+
+    <EditText
+        android:id="@+id/et_lastname"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Go WinMAP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:ems="10"
+        android:layout_margin="15dp"
+        android:textColor="@color/red3"
+        android:padding="8dp"
+        android:background="@drawable/background_singup"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:hint="@string/votre_nom" />
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/et_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:textColor="@color/red3"
+        android:background="@drawable/background_singup"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:hint="@string/votre_prenom" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:ems="10"
+        android:layout_margin="15dp"
+        android:textColor="@color/red3"
+        android:background="@drawable/background_singup"
+        android:gravity="center_horizontal"
+        android:inputType="textEmailAddress"
+        android:hint="@string/votre_e_mail"/>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/red3"
+        android:padding="8dp"
+        android:layout_margin="15dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/background_singup"
+        android:inputType="textPassword"
+        android:hint="@string/votre_mot_de_passe"/>
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/red3"
+        android:padding="8dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/background_singup"
+        android:gravity="center_horizontal"
+        android:inputType="textPassword"
+        android:hint="@string/confirm_password"/>
+
+<Button
+    android:id="@+id/btn_signup"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_margin="15dp"
+    android:backgroundTint="@color/win_yellow"
+    android:textColor="@color/white"
+    android:text="@string/inscrire" />
+
+<TextView
+    android:id="@+id/tv_go_to_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:gravity="center_horizontal"
+    android:text="@string/go_to_login"/>
+</LinearLayout>
+</ScrollView>
+

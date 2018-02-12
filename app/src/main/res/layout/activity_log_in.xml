@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:focusable="true"
+    android:background="@color/win_blue"
+android:focusableInTouchMode="true"
+tools:context="com.example.macbook.winmap.LogInActivity">
+
+
+<TextView
+    style="@style/subtitle"
+    android:id="@+id/tv_title_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Connexion"
+    android:textSize="25sp"
+    android:gravity="center_horizontal"/>
+
+
+    <EditText
+        android:id="@+id/et_email_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_login"
+        android:ems="10"
+        android:layout_margin="15dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:inputType="textEmailAddress"
+        android:hint="@string/votre_e_mail"/>
+
+
+    <EditText
+        android:id="@+id/et_password_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="8dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/background_login"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:inputType="textPassword"
+        android:hint="@string/votre_mot_de_passe"/>
+
+<Button
+    android:id="@+id/btn_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:backgroundTint="@color/win_yellow"
+    android:textColor="@color/black"
+    android:text="connexion" />
+
+<TextView
+    android:id="@+id/tv_login_goto_signup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:textColor="@color/win_yellow"
+    android:gravity="center_horizontal"
+    android:text="@string/goto_signup" />
+
+<TextView
+    android:id="@+id/tv_login_reset_password"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:textColor="@color/win_yellow"
+    android:gravity="center_horizontal"
+    android:text="@string/reset_password" />
+</LinearLayout>
+
