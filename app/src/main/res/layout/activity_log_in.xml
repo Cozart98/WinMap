@@ -7,7 +7,6 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:focusable="true"
-    android:background="@color/win_blue"
 android:focusableInTouchMode="true"
 tools:context="com.example.macbook.winmap.LogInActivity">
 
@@ -26,7 +25,6 @@ tools:context="com.example.macbook.winmap.LogInActivity">
         android:id="@+id/et_email_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_login"
         android:ems="10"
         android:layout_margin="15dp"
         android:padding="8dp"
@@ -43,7 +41,6 @@ tools:context="com.example.macbook.winmap.LogInActivity">
         android:ems="10"
         android:padding="8dp"
         android:layout_margin="15dp"
-        android:background="@drawable/background_login"
         android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:inputType="textPassword"
@@ -54,7 +51,6 @@ tools:context="com.example.macbook.winmap.LogInActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    android:backgroundTint="@color/win_yellow"
     android:textColor="@color/black"
     android:text="connexion" />
 
@@ -63,7 +59,6 @@ tools:context="com.example.macbook.winmap.LogInActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:textColor="@color/win_yellow"
     android:gravity="center_horizontal"
     android:text="@string/goto_signup" />
 
@@ -72,7 +67,6 @@ tools:context="com.example.macbook.winmap.LogInActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:textColor="@color/win_yellow"
     android:gravity="center_horizontal"
     android:text="@string/reset_password" />
 </LinearLayout>
