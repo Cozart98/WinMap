@@ -9,21 +9,17 @@ public class UserModel {
     private String firstname;
     private String lastname;
     private String email;
-    private String refId;
+    private boolean profil;
+    private String companyName;
+    private String adressCompany;
 
-    public UserModel(String firstname, String lastname, String email, String refId) {
+    public UserModel(String firstname, String lastname, String email, boolean profil, String companyName, String adressCompany) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-
-        this.refId = refId;
-    }
-
-    public UserModel(String firstname, String lastname, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.refId = "";
+        this.profil = profil;
+        this.companyName = companyName;
+        this.adressCompany = adressCompany;
     }
 
     public UserModel() {
@@ -41,10 +37,6 @@ public class UserModel {
         return email;
     }
 
-    public String getRefId() {
-        return refId;
-    }
-
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
@@ -57,7 +49,27 @@ public class UserModel {
         this.email = email;
     }
 
-    public void setRefId(String refId) {
-        this.refId = refId;
+    public boolean isProfil() {
+        return profil;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setProfil(boolean profil) {
+        this.profil = profil;
+    }
+
+    public String getAdressCompany() {
+        return adressCompany;
+    }
+
+    public void setAdressCompany(String adressCompany) {
+        this.adressCompany = adressCompany;
     }
 }

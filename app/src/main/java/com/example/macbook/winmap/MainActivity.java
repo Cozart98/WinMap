@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private SharedPreferences mySharedPref;
 
+    private EditText mEtCompanyName;
+    private EditText mETAdressCompany;
+    private boolean mIsSeller = false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText etEmail = findViewById(R.id.et_email);
         final EditText etPassword = findViewById(R.id.et_password);
         final EditText etConfirmPassword = findViewById(R.id.et_confirm_password);
+        mEtCompanyName = findViewById(R.id.et_company_name);
+        mETAdressCompany = findViewById(R.id.et_adress_company);
         Button btnSignup = findViewById(R.id.btn_signup);
         TextView tvGotoLogin = findViewById(R.id.tv_go_to_login);
         mProgressBar = findViewById(R.id.signup_progress_bar);
@@ -55,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 final String email = etEmail.getText().toString().trim();
                 final String password = etPassword.getText().toString().trim();
                 final String confirmPassword = etConfirmPassword.getText().toString().trim();
+                final String companyName = mEtCompanyName.getText().toString().trim();
+                final String adressCompany = mETAdressCompany.getText().toString().trim();
 
                 if (lastname.isEmpty()
                         || firstname.isEmpty()
@@ -113,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                                                 "Compte créé avec succès",
                                                 Toast.LENGTH_LONG).show();
 
-                                        UserModel myUser = new UserModel(firstname, lastname, email);
+                                        UserModel myUser = new UserModel(firstname, lastname, email,mIsSeller,companyName,adressCompany);
                                         signupUserInDatabase(myUser);
                                         signUserInSharedPref(myUser);
                                         Intent intent = new Intent(MainActivity.this,
@@ -169,5 +179,25 @@ public class MainActivity extends AppCompatActivity {
         mySharedPref.edit().putString("lastName", myUser.getLastname()).apply();
         mySharedPref.edit().putString("firstName", myUser.getFirstname()).apply();
         mySharedPref.edit().putString("email", myUser.getEmail()).apply();
+    }
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.radioBuyer:
+                if (checked) {
+                    mEtCompanyName.setVisibility(View.GONE);
+                    mETAdressCompany.setVisibility(View.GONE);
+                    mIsSeller = false;
+                }
+                break;
+            case R.id.radioSeller:
+                if (checked) {
+                    mEtCompanyName.setVisibility(View.VISIBLE);
+                    mETAdressCompany.setVisibility(View.VISIBLE);
+                    mIsSeller = true;
+                }
+                break;
+        }
     }
 }
