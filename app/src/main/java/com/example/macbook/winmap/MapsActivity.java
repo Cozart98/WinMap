@@ -1,6 +1,7 @@
 package com.example.macbook.winmap;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -100,6 +101,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
     private GoogleApiClient mGoogleApiClient;
+    private SharedPreferences mySharedPref;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,6 +111,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
         mRelLayout1 = (RelativeLayout) findViewById(R.id.relLayout1);
+
+        mySharedPref = getSharedPreferences("SP", MODE_PRIVATE);
+        String email = mySharedPref.getString("email", "");
+
+        if (email.equals("chihaoui1098@gmail.com")) {
+            mFabAdd.setVisibility(View.GONE);
+        }
 
         getLocationPermission();
 
