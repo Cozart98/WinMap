@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -66,6 +69,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+            AddStore();
+
+            googleMap.setMapStyle(new MapStyleOptions(getResources()
+                    .getString(R.string.style_json)));
 
             init();
         }
@@ -84,6 +91,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     //widgets
     private AutoCompleteTextView mSearchText;
     private ImageView mGps;
+    private FloatingActionButton mFabAdd;
+    private RelativeLayout mRelLayout1;
 
     //vars
     private Boolean mLocationPermissionsGranted = false;
@@ -98,6 +107,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
         mGps = (ImageView) findViewById(R.id.ic_gps);
+        mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
+        mRelLayout1 = (RelativeLayout) findViewById(R.id.relLayout1);
 
         getLocationPermission();
 
@@ -271,5 +282,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void hideSoftKeyboard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    private void AddStore(){
+        mFabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mRelLayout1.getVisibility() == View.GONE) {
+                    mRelLayout1.setVisibility(View.VISIBLE);
+                }else {
+                    mRelLayout1.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 }
