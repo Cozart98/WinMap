@@ -18,10 +18,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +96,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ImageView mGps;
     private FloatingActionButton mFabAdd;
     private RelativeLayout mRelLayout1;
+    private Spinner mActivitySpinner;
 
     //vars
     private Boolean mLocationPermissionsGranted = false;
@@ -111,6 +114,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
         mRelLayout1 = (RelativeLayout) findViewById(R.id.relLayout1);
+        mActivitySpinner = (Spinner) findViewById(R.id.activity_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.activity_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mActivitySpinner.setAdapter(adapter);
+
+
 
         mySharedPref = getSharedPreferences("SP", MODE_PRIVATE);
         String email = mySharedPref.getString("email", "");
