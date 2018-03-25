@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -96,7 +97,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ImageView mGps;
     private FloatingActionButton mFabAdd;
     private RelativeLayout mRelLayout1;
+    private RelativeLayout mRelLayout2;
+    private RelativeLayout mRelLayout3;
+    private RelativeLayout mRelLayout4;
+    private RelativeLayout mRelLayout5;
+    private RelativeLayout mRelLayout6;
+    private RelativeLayout mRelLayout7;
     private Spinner mActivitySpinner;
+    private Button mAddCompany;
+    private Button mAnnular;
 
     //vars
     private Boolean mLocationPermissionsGranted = false;
@@ -114,7 +123,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
         mRelLayout1 = (RelativeLayout) findViewById(R.id.relLayout1);
+        mRelLayout2 = (RelativeLayout) findViewById(R.id.relLayout2);
+        mRelLayout3 = (RelativeLayout) findViewById(R.id.relLayout3);
+        mRelLayout4 = (RelativeLayout) findViewById(R.id.relLayout4);
+        mRelLayout5 = (RelativeLayout) findViewById(R.id.relLayout5);
+        mRelLayout6 = (RelativeLayout) findViewById(R.id.relLayout6);
+        mRelLayout7 = (RelativeLayout) findViewById(R.id.relLayout7);
         mActivitySpinner = (Spinner) findViewById(R.id.activity_spinner);
+        mAddCompany = (Button) findViewById(R.id.bt_add_company);
+        mAnnular = (Button) findViewById(R.id.bt_annular);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.activity_array, android.R.layout.simple_spinner_item);
@@ -149,7 +166,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mSearchText.setAdapter(mPlaceAutocompleteAdapter);
 
-        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      /*  mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if(actionId == EditorInfo.IME_ACTION_SEARCH
@@ -162,6 +179,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
 
                 return false;
+            }
+        });*/
+
+        mAddCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    //execute our method for searching
+                    geoLocate();
             }
         });
 
@@ -310,8 +335,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View view) {
                 if (mRelLayout1.getVisibility() == View.GONE) {
                     mRelLayout1.setVisibility(View.VISIBLE);
+                    mRelLayout2.setVisibility(View.VISIBLE);
+                    mRelLayout3.setVisibility(View.VISIBLE);
+                    mRelLayout4.setVisibility(View.VISIBLE);
+                    mRelLayout5.setVisibility(View.VISIBLE);
+                    mRelLayout6.setVisibility(View.VISIBLE);
+                    mRelLayout7.setVisibility(View.VISIBLE);
                 }else {
                     mRelLayout1.setVisibility(View.GONE);
+                    mRelLayout2.setVisibility(View.GONE);
+                    mRelLayout3.setVisibility(View.GONE);
+                    mRelLayout4.setVisibility(View.GONE);
+                    mRelLayout5.setVisibility(View.GONE);
+                    mRelLayout6.setVisibility(View.GONE);
+                    mRelLayout7.setVisibility(View.GONE);
                 }
             }
         });

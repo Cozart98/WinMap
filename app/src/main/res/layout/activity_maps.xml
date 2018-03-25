@@ -123,6 +123,43 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible"
+        android:elevation="10dp"
+        android:id="@+id/relLayout6">
+
+        <Button
+            android:id="@+id/bt_add_company"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="VAlider"
+            android:background="@color/green3"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible"
+        android:elevation="10dp"
+        android:id="@+id/relLayout7">
+
+        <Button
+            android:id="@+id/bt_annular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="annuler" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginTop="130dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
@@ -156,7 +193,7 @@
         android:layout_alignEnd="@+id/ic_gps"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/ic_gps"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="58dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:clickable="true"
