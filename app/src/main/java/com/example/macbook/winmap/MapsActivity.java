@@ -14,10 +14,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -25,7 +23,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -43,6 +40,9 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -103,6 +103,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private RelativeLayout mRelLayout5;
     private RelativeLayout mRelLayout6;
     private RelativeLayout mRelLayout7;
+    private EditText mInputCompany;
+    private EditText mInputSubType;
+    private EditText mInputSchedule;
     private Spinner mActivitySpinner;
     private Button mAddCompany;
     private Button mAnnular;
@@ -114,6 +117,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
     private GoogleApiClient mGoogleApiClient;
     private SharedPreferences mySharedPref;
+    private String mEmailEncode;
+    private String mEmailDecode;
+
+    //firebase
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,7 +133,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
         mRelLayout1 = (RelativeLayout) findViewById(R.id.relLayout1);
+        mInputCompany = (EditText) findViewById(R.id.input_company);
         mRelLayout2 = (RelativeLayout) findViewById(R.id.relLayout2);
+        mInputSubType = (EditText) findViewById(R.id.input_sub_type);
+        mInputSchedule = (EditText) findViewById(R.id.input_schedule);
         mRelLayout3 = (RelativeLayout) findViewById(R.id.relLayout3);
         mRelLayout4 = (RelativeLayout) findViewById(R.id.relLayout4);
         mRelLayout5 = (RelativeLayout) findViewById(R.id.relLayout5);
@@ -140,14 +153,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        mySharedPref = getSharedPreferences("SP", MODE_PRIVATE);
-        String email = mySharedPref.getString("email", "");
 
-        if (email.equals("chihaoui1098@gmail.com")) {
+        mySharedPref = getSharedPreferences("SP", MODE_PRIVATE);
+        mEmailDecode = mySharedPref.getString("email", "");
+        mEmailEncode = mEmailDecode.replace(".",",");
+
+
+
+        if (mEmailDecode.equals("chihaoui1098@gmail.com")) {
             mFabAdd.setVisibility(View.GONE);
         }
 
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference(mEmailEncode);
         getLocationPermission();
+
 
     }
 
@@ -166,27 +187,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mSearchText.setAdapter(mPlaceAutocompleteAdapter);
 
-      /*  mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
-                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER){
-
-                    //execute our method for searching
-                    geoLocate();
-                }
-
-                return false;
-            }
-        });*/
 
         mAddCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     //execute our method for searching
                     geoLocate();
+                    
+                    mDatabaseReference.setValue(mInputCompany.getText().toString());
+                    mDatabaseReference.setValue(mInputSubType.getText().toString());
+                    mDatabaseReference.setValue(mInputSchedule.getText().toString());
             }
         });
 

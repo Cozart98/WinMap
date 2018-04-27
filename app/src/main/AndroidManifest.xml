@@ -40,7 +40,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".LogInActivity" />
-        <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".AddCompanyActivity"></activity>
     </application>
 
 </manifest>

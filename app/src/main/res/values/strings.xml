@@ -17,11 +17,11 @@
     <string name="instructions_sent_by_email">Nous vous avons envoyé les instructions par e-mail</string>
     <string name="password_initialization_failed">Echec de l\'initialisation du mot de passe</string>
 
-        <string-array name="activity_array">
-            <item>Séléctionner vote activité...</item>
-            <item>Santé / Bien Être</item>
-            <item>Relation</item>
-            <item>Développement personnel</item>
-        </string-array>
+    <string-array name="activity_array">
+        <item>Séléctionner vote activité...</item>
+        <item>Santé / Bien Être</item>
+        <item>Relation</item>
+        <item>Développement personnel</item>
+    </string-array>
 
 </resources>
