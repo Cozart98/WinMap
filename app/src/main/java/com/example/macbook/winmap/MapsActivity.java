@@ -41,8 +41,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -160,13 +163,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        if (mEmailDecode.equals("chihaoui1098@gmail.com")) {
+       /* if (mEmailDecode.equals("chihaoui1098@gmail.com")) {
             mFabAdd.setVisibility(View.GONE);
-        }
+        }*/
 
         FirebaseApp.initializeApp(this);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference(mEmailEncode);
+        mDatabaseReference = mFirebaseDatabase.getReference("Store/"+mEmailEncode);
         getLocationPermission();
 
 
@@ -193,10 +196,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View view) {
                     //execute our method for searching
                     geoLocate();
-                    
-                    mDatabaseReference.setValue(mInputCompany.getText().toString());
-                    mDatabaseReference.setValue(mInputSubType.getText().toString());
-                    mDatabaseReference.setValue(mInputSchedule.getText().toString());
+                StoreModel user = new StoreModel(
+                        mInputCompany.getText().toString(),
+                        mSearchText.getText().toString(),
+                        mActivitySpinner.getSelectedItem().toString(),
+                        mInputSubType.getText().toString(),
+                        mInputSchedule.getText().toString());
+                DatabaseReference userRef = mFirebaseDatabase.getReference("Store");
+                userRef.child(mEmailEncode).setValue(user);
             }
         });
 
