@@ -196,14 +196,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View view) {
                     //execute our method for searching
                     geoLocate();
-                StoreModel user = new StoreModel(
-                        mInputCompany.getText().toString(),
-                        mSearchText.getText().toString(),
-                        mActivitySpinner.getSelectedItem().toString(),
-                        mInputSubType.getText().toString(),
-                        mInputSchedule.getText().toString());
-                DatabaseReference userRef = mFirebaseDatabase.getReference("Store");
-                userRef.child(mEmailEncode).setValue(user);
+
             }
         });
 
@@ -239,6 +232,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
+
+            String storeLatitude = String.valueOf(address.getLatitude());
+            String storeLongitude = String.valueOf(address.getLongitude());
+
+            StoreModel user = new StoreModel(
+                    mInputCompany.getText().toString(),
+                    mSearchText.getText().toString(),
+                    mActivitySpinner.getSelectedItem().toString(),
+                    mInputSubType.getText().toString(),
+                    mInputSchedule.getText().toString(),
+                    storeLatitude,
+                    storeLongitude);
+            DatabaseReference userRef = mFirebaseDatabase.getReference("Store");
+            userRef.child(mEmailEncode).setValue(user);
+
+        }else{
+            Toast.makeText(MapsActivity.this, "oups mauvaise adresse", Toast.LENGTH_LONG).show();
         }
     }
 

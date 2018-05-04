@@ -6,17 +6,21 @@ package com.example.macbook.winmap;
 
 public class StoreModel {
     private String companyName;
-    private String adress;
+    private String address;
     private String activity;
     private String subActivity;
     private String schedule;
+    private String storeLatitude;
+    private String storeLongitude;
 
-    public StoreModel (String companyName, String adress, String activity, String subActivity, String schedule){
+    public StoreModel (String companyName, String address, String activity, String subActivity, String schedule, String storeLatitude, String storeLongitude){
         this.companyName = companyName;
-        this.adress = adress;
+        this.address = address;
         this.activity = activity;
         this.subActivity = subActivity;
         this.schedule = schedule;
+        this.storeLatitude = storeLatitude;
+        this.storeLongitude = storeLongitude;
     }
 
     public StoreModel() {
@@ -31,11 +35,11 @@ public class StoreModel {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getActivity() {
@@ -56,6 +60,22 @@ public class StoreModel {
 
     public String getSchedule() {
         return schedule;
+    }
+
+    public String getStoreLatitude() {
+        return storeLatitude;
+    }
+
+    public void setStoreLatitude(String storeLatitude) {
+        this.storeLatitude = storeLatitude;
+    }
+
+    public String getStoreLongitude() {
+        return storeLongitude;
+    }
+
+    public void setStoreLongitude(String storeLongitude) {
+        this.storeLongitude = storeLongitude;
     }
 
     public void setSchedule(String schedule) {
