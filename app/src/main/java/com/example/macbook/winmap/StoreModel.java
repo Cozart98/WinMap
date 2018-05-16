@@ -10,10 +10,10 @@ public class StoreModel {
     private String activity;
     private String subActivity;
     private String schedule;
-    private String storeLatitude;
-    private String storeLongitude;
+    private double storeLatitude;
+    private double storeLongitude;
 
-    public StoreModel (String companyName, String address, String activity, String subActivity, String schedule, String storeLatitude, String storeLongitude){
+    public StoreModel (String companyName, String address, String activity, String subActivity, String schedule, Double storeLatitude, Double storeLongitude){
         this.companyName = companyName;
         this.address = address;
         this.activity = activity;
@@ -62,19 +62,19 @@ public class StoreModel {
         return schedule;
     }
 
-    public String getStoreLatitude() {
+    public Double getStoreLatitude() {
         return storeLatitude;
     }
 
-    public void setStoreLatitude(String storeLatitude) {
+    public void setStoreLatitude(Double storeLatitude) {
         this.storeLatitude = storeLatitude;
     }
 
-    public String getStoreLongitude() {
+    public Double getStoreLongitude() {
         return storeLongitude;
     }
 
-    public void setStoreLongitude(String storeLongitude) {
+    public void setStoreLongitude(Double storeLongitude) {
         this.storeLongitude = storeLongitude;
     }
 

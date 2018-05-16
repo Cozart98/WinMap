@@ -147,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        SingletonStore.getInstance();
+
     }
 
     @Override

@@ -34,9 +34,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +53,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener{
@@ -80,6 +82,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             googleMap.setMapStyle(new MapStyleOptions(getResources()
                     .getString(R.string.style_json)));
+
+            mListMarkers = new Marker[mListStoreAffiche.size()];
+            for (int i = 0; i < mListStoreAffiche.size(); i++) {
+                mListMarkers[i] = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(mListStoreAffiche.get(i).getStoreLatitude(),
+                                mListStoreAffiche.get(i).getStoreLongitude()))
+                        .title(mListStoreAffiche.get(i).getCompanyName()));
+            }
 
             init();
         }
@@ -112,6 +122,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Spinner mActivitySpinner;
     private Button mAddCompany;
     private Button mAnnular;
+    private Marker[] mListMarkers;
+    private ArrayList<StoreModel> mListStoreAffiche = new ArrayList<>();
+    private ArrayList<StoreModel> mListStore = new ArrayList<>();
 
     //vars
     private Boolean mLocationPermissionsGranted = false;
@@ -172,7 +185,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mDatabaseReference = mFirebaseDatabase.getReference("Store/"+mEmailEncode);
         getLocationPermission();
 
-
+        mListStore = SingletonStore.getInstance().getListStore();
+        for (int i = 0; i < mListStore.size(); i++) {
+                mListStoreAffiche.add(mListStore.get(i));
+        }
     }
 
     private void init(){
@@ -233,8 +249,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
 
-            String storeLatitude = String.valueOf(address.getLatitude());
-            String storeLongitude = String.valueOf(address.getLongitude());
+            Double storeLatitude = address.getLatitude();
+            Double storeLongitude = address.getLongitude();
 
             StoreModel user = new StoreModel(
                     mInputCompany.getText().toString(),
