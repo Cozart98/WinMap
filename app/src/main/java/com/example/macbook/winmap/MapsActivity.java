@@ -85,9 +85,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             mListMarkers = new Marker[mListStoreAffiche.size()];
             for (int i = 0; i < mListStoreAffiche.size(); i++) {
+                BitmapDescriptor markerIcon;
+                if (mListStoreAffiche.get(i).getActivity().contentEquals("Relation")) {
+                    markerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
+                } else if(mListStoreAffiche.get(i).getActivity().contentEquals("Développement personnel")){
+                    markerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+                } else {
+                    markerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+                }
                 mListMarkers[i] = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(mListStoreAffiche.get(i).getStoreLatitude(),
                                 mListStoreAffiche.get(i).getStoreLongitude()))
+                        .icon(markerIcon)
+                        .snippet(mListStoreAffiche.get(i).getActivity() +  "\n" +
+                                 mListStoreAffiche.get(i).getSubActivity() + "--"+
+                                 mListStoreAffiche.get(i).getSchedule())
                         .title(mListStoreAffiche.get(i).getCompanyName()));
             }
 
