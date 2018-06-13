@@ -320,7 +320,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
                     .title(title);
-            mMap.addMarker(options);
         }
 
         hideSoftKeyboard();
@@ -408,4 +407,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
+
+    @Override
+    public void onBackPressed() { }
 }
